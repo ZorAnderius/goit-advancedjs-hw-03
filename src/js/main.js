@@ -18,22 +18,12 @@ const handlerSelectBreed = async ([{ value }]) => {
             refs.loader.classList.toggle('loader-hidden');
             const data = await fetchCatByBreed(value);
             if (data && data.length) {
-
-            const breedInfo = {
-                ... data[0].breeds[0],
-                url: data[0].url,
-            }
-            console.log(breedInfo);
-            refs.breadContainer.innerHTML = '';
-            refs.breadContainer.insertAdjacentHTML('afterbegin', drawCat(breedInfo));
-            refs.loader.classList.toggle('loader-hidden');
-            }
-        else {
-            showInfo()
-            }
+                refs.breadContainer.innerHTML = '';
+                refs.breadContainer.insertAdjacentHTML('afterbegin', drawCat({... data[0].breeds[0], url: data[0].url}));
+                refs.loader.classList.toggle('loader-hidden');
+            } else {showInfo()}
         } catch (error) {
             refs.loader.classList.toggle('loader-hidden');
-
             showError(error);
             showErrorPage(refs.errorField, error);
         }
@@ -45,7 +35,6 @@ const initSelect = async () => {
     try {
         const data = await fetchBreeds();
         refs.select.innerHTML = await createOptions(data);
-        
         const select = new SlimSelect({
             select: 'select.breed-select',
             events: {
@@ -56,7 +45,6 @@ const initSelect = async () => {
     } catch (error) {
         showError(error);
         showErrorPage(refs.errorField, error);
-
     }
 }
 
