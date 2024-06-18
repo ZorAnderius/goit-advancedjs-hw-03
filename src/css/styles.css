@@ -5,6 +5,10 @@
   |============================
 */
 @import url('./reset.css');
+@import url('./slimselect.css');
+@import url('./simplebar.min.css');
+@import url('./cat_card.css');
+@import url('./loader.css');
 
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -20,4 +24,135 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+}
+
+body{
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.container {
+   max-width: 1200px;
+   width: 100%;
+   margin: 0 auto;
+}
+
+.select-wrap{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 40px;
+} 
+
+.ss-main {
+  max-width: 300px;
+    color: var(--ss-bg-color);
+    min-height: var(--ss-main-height);
+    width: 100%;
+    padding: var(--ss-spacing-s);
+    cursor: pointer;
+    border: 1px solid var(--ss-border-color);
+    border-radius: var(--ss-border-radius);
+    background-color: var(--ss-font-color);
+    outline: 0;
+    box-sizing: border-box;
+    transition: background-color var(--ss-animation-timing);
+    overflow: hidden;
+}
+
+.ss-main .ss-values {
+    display: inline-flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    gap: var(--ss-spacing-m);
+    flex: 1 1 100%;
+}
+
+.ss-content {
+  overflow: hidden;
+}
+
+.ss-content .ss-list::-webkit-scrollbar {
+  width: 0;
+}
+
+.ss-content .ss-search input {
+  color: var(--ss-bg-color);
+    border: 1px solid grey;
+    background-color: transparent;
+
+}
+
+.ss-content .ss-search input:focus {
+    box-shadow: 0 0 5px var(--ss-font-placeholder-color);
+}
+
+
+.ss-content.ss-open-below {
+    opacity: 0.7;
+    color: var(--ss-bg-color);
+    background-color: var(--ss-font-color);
+}
+
+.ss-content .ss-list .ss-option.ss-highlighted, .ss-content .ss-list .ss-option:not(.ss-disabled) {
+    color: var(--ss-bg-color);
+    background-color: var(--ss-font-color);
+    padding: 10px;
+    transition-property: color, background-color;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in;
+}
+
+.ss-content .ss-list .ss-option.ss-highlighted, .ss-content .ss-list .ss-option:not(.ss-disabled).ss-selected {
+    color: var(--ss-bg-color);
+    background-color: var(--ss-font-color);
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,5) inset;
+-webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.5) inset;
+-moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.5) inset;
+}
+
+.ss-content .ss-list .ss-option:hover {
+    color: var(--ss-font-color);
+    background-color: var(--ss-bg-color);
+}
+
+
+.ss-main .ss-arrow path {
+    fill: none;
+    stroke: var(--ss-bg-color);
+    stroke-width: 18;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition-timing-function: ease-out;
+    transition: var(--ss-animation-timing);
+}
+
+.simplebar-scrollbar{
+  min-height: 40px;
+}
+
+.simplebar-scrollbar:before{
+  background-color: transparent;
+ background: linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0%, rgba(252, 252, 252, 0.907) 35%, rgba(0,0,0,1) 100%);
+}
+
+.simplebar-placeholder {
+    max-height: 260px;
+    max-width: 100%;
+    width: 100%;
+    pointer-events: none;
+}
+
+.error{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+  max-width: 400px;
+  width: 100%;
 }
