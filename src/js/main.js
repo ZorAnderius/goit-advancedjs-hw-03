@@ -15,12 +15,14 @@ window.addEventListener('load', handlerLoader)
 const handlerSelectBreed = async ([{ value }]) => {
     if (value) {
         try {
+            refs.catContainer.classList.toggle('cat-info-hidden');
             refs.loader.classList.toggle('loader-hidden');
             const data = await fetchCatByBreed(value);
             if (data && data.length) {
-                refs.breadContainer.innerHTML = '';
-                refs.breadContainer.insertAdjacentHTML('afterbegin', drawCat({... data[0].breeds[0], url: data[0].url}));
+                refs.catContainer.innerHTML = '';
+                refs.catContainer.insertAdjacentHTML('afterbegin', drawCat({ ...data[0].breeds[0], url: data[0].url }));
                 refs.loader.classList.toggle('loader-hidden');
+                refs.catContainer.classList.toggle('cat-info-hidden');
             } else {showInfo()}
         } catch (error) {
             refs.loader.classList.toggle('loader-hidden');

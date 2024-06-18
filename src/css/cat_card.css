@@ -6,6 +6,17 @@
     gap: 40px;
 }
 
+.cat-info-hidden{
+    animation: disappear 500ms forwards;
+}
+
+@keyframes disappear {
+    100%{
+        opacity: 0;
+        visibility: 100%;
+    }
+}
+
 .img-thumb {
     border-radius: 20px;
     width: 400px;
